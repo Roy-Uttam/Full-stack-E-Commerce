@@ -6,7 +6,7 @@ app.use(express.json())
 
 //Route
 
-const user = require("./routes/user.routes")
+const user = require("./routes/user.route")
 
 app.use("/api/v1", user)
 
