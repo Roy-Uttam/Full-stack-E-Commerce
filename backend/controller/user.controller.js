@@ -37,6 +37,24 @@ exports.UpdateUSer = async (req, res, next) => {
 };
 
 
+  // Create User
+  exports.DeleteUser = async (req, res, next) => {
+    const user = await User.findById(req.params.id);
+    
+    if(!user){
+      return res.status(500).json({
+        success:false,
+        message:"User not found"
+      })
+    }
+    await user.deleteOne()
+
+    res.status(200).json({
+      success: true,
+      message:"User deleted succesfully"
+    });
+    };
+
 // Create User
 exports.getAllUsers = async (req, res, next) => {
   const users = await User.find();
@@ -46,3 +64,7 @@ exports.getAllUsers = async (req, res, next) => {
     users,
   });
   };
+
+
+
+
