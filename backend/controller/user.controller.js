@@ -10,7 +10,7 @@ exports.createUser = async (req, res, next) => {
   });
 };
 
-// Create User
+// update User
 exports.UpdateUSer = async (req, res, next) => {
   
   let user =await User.findById(req.params.id);
@@ -37,7 +37,7 @@ exports.UpdateUSer = async (req, res, next) => {
 };
 
 
-  // Create User
+  // Delete User
   exports.DeleteUser = async (req, res, next) => {
     const user = await User.findById(req.params.id);
     
@@ -55,7 +55,7 @@ exports.UpdateUSer = async (req, res, next) => {
     });
     };
 
-// Create User
+// get all User
 exports.getAllUsers = async (req, res, next) => {
   const users = await User.find();
 
