@@ -1,5 +1,40 @@
 const Product = require("../models//product.model");
 
+
+// get all Product
+exports.getAllProduct = async (req, res, next) => {
+  const products = await Product.find();
+
+  if(!products){
+    return res.status(500).json({
+      success:false,
+      message:"Product not found"
+    })
+  }
+  
+  res.status(200).json({
+    success: true,
+    products,
+  });
+  };
+
+  // get single Product
+exports.ProductDetails = async (req, res, next) => {
+  const products = await Product.findById(req.params.id);
+  
+  if(!products){
+    return res.status(500).json({
+      success:false,
+      message:"Product not found"
+    })
+  }
+
+  res.status(200).json({
+    success: true,
+    products
+  });
+  };
+
 // Create Product
 exports.createProduct = async (req, res, next) => {
   const products = await Product.create(req.body);
@@ -55,15 +90,6 @@ exports.UpdateProduct = async (req, res, next) => {
     });
     };
 
-// get all Product
-exports.getAllProduct = async (req, res, next) => {
-  const products = await Product.find();
-
-  res.status(200).json({
-    success: true,
-    products,
-  });
-  };
 
 
 
