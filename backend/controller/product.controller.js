@@ -36,7 +36,6 @@ exports.ProductDetails = catchAsyncError(async (req, res, next) => {
 // Create Product
 exports.createProduct = catchAsyncError(async (req, res, next) => {
   const products = await Product.create(req.body);
-
   res.status(201).json({
     success: true,
     products,
